@@ -16,13 +16,11 @@ import nl.mrwouter.minetopiafarms.utils.Utils;
 import nl.mrwouter.minetopiafarms.utils.XMaterial;
 
 public class NPCClickListener implements Listener {
-
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onNPCRightClick(NPCRightClickEvent e) {
 		Player clicker = e.getClicker();
 		NPC clicked = e.getNPC();
 		if (Main.getMessage("NPC.Name").equals(clicked.getName())) {
-
 			if (SDBPlayer.createSDBPlayer(clicker).getPrefix().equalsIgnoreCase("Boer")) {
 				double paymentAmount = 0;
 				for (ItemStack item : clicker.getInventory().getContents()) {
@@ -60,7 +58,6 @@ public class NPCClickListener implements Listener {
 						}
 					}
 				}
-
 				API.getEcon().depositPlayer(clicker, paymentAmount);
 				clicker.sendMessage(
 						Main.getMessage("GeldBetaald").replaceAll("<Bedrag>", Utils.formatMoney(paymentAmount)));
@@ -81,9 +78,8 @@ public class NPCClickListener implements Listener {
 											* item.getAmount());
 						} else if (item.getType() == XMaterial.EMERALD_ORE.parseMaterial()) {
 							clicker.getInventory().removeItem(item);
-							paymentAmount = paymentAmount
-									+ (Main.getPlugin().getConfig().getDouble("TerugverkoopPrijs.Mijnwerker.EMERALD_ORE")
-											* item.getAmount());
+							paymentAmount = paymentAmount + (Main.getPlugin().getConfig()
+									.getDouble("TerugverkoopPrijs.Mijnwerker.EMERALD_ORE") * item.getAmount());
 						} else if (item.getType() == XMaterial.GOLD_ORE.parseMaterial()) {
 							clicker.getInventory().removeItem(item);
 							paymentAmount = paymentAmount
@@ -96,24 +92,20 @@ public class NPCClickListener implements Listener {
 											* item.getAmount());
 						} else if (item.getType() == XMaterial.REDSTONE_ORE.parseMaterial()) {
 							clicker.getInventory().removeItem(item);
-							paymentAmount = paymentAmount
-									+ (Main.getPlugin().getConfig().getDouble("TerugverkoopPrijs.Mijnwerker.REDSTONE_ORE")
-											* item.getAmount());
+							paymentAmount = paymentAmount + (Main.getPlugin().getConfig()
+									.getDouble("TerugverkoopPrijs.Mijnwerker.REDSTONE_ORE") * item.getAmount());
 						} else if (item.getType() == XMaterial.DIAMOND_ORE.parseMaterial()) {
 							clicker.getInventory().removeItem(item);
-							paymentAmount = paymentAmount
-									+ (Main.getPlugin().getConfig().getDouble("TerugverkoopPrijs.Mijnwerker.DIAMOND_ORE")
-											* item.getAmount());
+							paymentAmount = paymentAmount + (Main.getPlugin().getConfig()
+									.getDouble("TerugverkoopPrijs.Mijnwerker.DIAMOND_ORE") * item.getAmount());
 						}
 					}
 				}
-
 				API.getEcon().depositPlayer(clicker, paymentAmount);
 				clicker.sendMessage(
 						Main.getMessage("GeldBetaald").replaceAll("<Bedrag>", Utils.formatMoney(paymentAmount)));
 				API.updateScoreboard(clicker);
 			} else if (SDBPlayer.createSDBPlayer(clicker).getPrefix().equalsIgnoreCase("Visser")) {
-
 				double paymentAmount = 0;
 				if (e.getClicker().getInventory().contains(XMaterial.PUFFERFISH.parseMaterial())
 						|| e.getClicker().getInventory().contains(XMaterial.TROPICAL_FISH.parseMaterial())) {
@@ -129,7 +121,6 @@ public class NPCClickListener implements Listener {
 						}
 					}
 				}
-
 				API.getEcon().depositPlayer(clicker, paymentAmount);
 				clicker.sendMessage(
 						Main.getMessage("GeldBetaald").replaceAll("<Bedrag>", Utils.formatMoney(paymentAmount)));
@@ -145,7 +136,6 @@ public class NPCClickListener implements Listener {
 						}
 					}
 				}
-
 				API.getEcon().depositPlayer(clicker, paymentAmount);
 				clicker.sendMessage(
 						Main.getMessage("GeldBetaald").replaceAll("<Bedrag>", Utils.formatMoney(paymentAmount)));

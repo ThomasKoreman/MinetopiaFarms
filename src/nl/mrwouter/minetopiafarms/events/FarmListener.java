@@ -16,9 +16,7 @@ import nl.mrwouter.minetopiafarms.utils.CustomFlags;
 import nl.mrwouter.minetopiafarms.utils.Utils;
 import nl.mrwouter.minetopiafarms.utils.XMaterial;
 
-@SuppressWarnings("deprecation")
 public class FarmListener implements Listener {
-
 	@EventHandler
 	public void onBreak(BlockBreakEvent e) {
 		Player p = e.getPlayer();
@@ -42,12 +40,10 @@ public class FarmListener implements Listener {
 				e.setCancelled(true);
 				return;
 			}
-
 			if (!CustomFlags.isAllowed(p, e.getBlock().getLocation(), "farm")) {
 				p.sendMessage(Main.getMessage("GeenRegion").replaceAll("<Tag>", "farm"));
 				return;
 			}
-
 			if (!(e.getBlock().getState().getData() instanceof Crops)) {
 				if (e.getBlock().getType() == XMaterial.PUMPKIN.parseMaterial()) {
 					p.getInventory().addItem(new ItemStack(XMaterial.PUMPKIN.parseMaterial(), 1));

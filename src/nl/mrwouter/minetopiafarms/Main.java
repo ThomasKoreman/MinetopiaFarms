@@ -13,7 +13,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.material.Crops;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import nl.mrwouter.minetopiafarms.commands.KiesCMD;
 import nl.mrwouter.minetopiafarms.commands.MTFarmsCMD;
 import nl.mrwouter.minetopiafarms.events.BlockBreaker;
 import nl.mrwouter.minetopiafarms.events.FarmListener;
@@ -27,9 +26,7 @@ import nl.mrwouter.minetopiafarms.utils.Utils;
 import nl.mrwouter.minetopiafarms.utils.Utils.GrowingCrop;
 import nl.mrwouter.minetopiafarms.utils.Utils.TreeObj;
 
-@SuppressWarnings("deprecation")
 public class Main extends JavaPlugin {
-
 	private static Main pl;
 
 	public void onEnable() {
@@ -38,12 +35,9 @@ public class Main extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new TreeFarmer(), this);
 		Bukkit.getPluginManager().registerEvents(new InventoryClickListener(), this);
 		Bukkit.getPluginManager().registerEvents(new FishListener(), this);
-
 		if (Bukkit.getPluginManager().getPlugin("Citizens") != null) {
 			Bukkit.getPluginManager().registerEvents(new NPCClickListener(), this);
 		}
-
-		getCommand("kies").setExecutor(new KiesCMD());
 		getCommand("minetopiafarms").setExecutor(new MTFarmsCMD());
 
 		getConfig().addDefault("KostenVoorEenBaan", 2500);
